@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>印象笔记-一站式知识管理与笔记工具平台</title>
+    <meta name="description" content="印象笔记官网，提供强大的笔记记录、知识管理、跨设备同步及团队协作功能。无论是个人学习、工作规划还是团队项目，印象笔记都能助您高效整理信息，让灵感随时随地在云端呈现。">
+    <meta name="keywords" content="印象笔记, 笔记软件, 知识管理, 云笔记, 笔记本, 效率工具, Evernote">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00b894;
+            --primary-dark: #00a884;
+            --secondary-color: #2d3436;
+            --accent-color: #0984e3;
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-secondary: #636e72;
+            --border-color: #dfe6e9;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 184, 148, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-color);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 184, 148, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Use Cases */
+        .use-cases {
+            padding: 6rem 0;
+            background-color: #fff;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .case-item {
+            text-align: center;
+        }
+
+        .case-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .case-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* App Showcase */
+        .app-showcase {
+            padding: 6rem 0;
+        }
+
+        .showcase-layout {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            background-color: var(--primary-color);
+            border-radius: 20px;
+            padding: 4rem;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .showcase-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .showcase-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .showcase-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .showcase-visual {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .app-mockup {
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .app-mockup img {
+            border-radius: 6px;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            padding: 6rem 0;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        .check-icon::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #b2bec3;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .case-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-actions .btn {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: var(--shadow-md);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .showcase-layout {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            .showcase-visual {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6C2 4.89543 2.89543 4 4 4Z" stroke="#00b894" stroke-width="2"/>
+                    <path d="M6 10H18" stroke="#00b894" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 14H12" stroke="#00b894" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>印象笔记</span>
+            </a>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#features">功能特色</a></li>
+                    <li><a href="#use-cases">应用场景</a></li>
+                    <li><a href="#pricing">价格方案</a></li>
+                    <li><a href="#business">企业版</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费注册</a>
+                <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>您的第二大脑，<br>让灵感永不遗失</h1>
+                    <p>印象笔记是一款强大的跨平台笔记工具，帮助您高效记录、整理和分享知识。无论是会议纪要、学习笔记还是生活琐事，都能在云端轻松管理。</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">立即开始使用</a>
+                        <a href="#" class="btn btn-outline">观看演示视频</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/evernote_hero/600/400.jpg" alt="印象笔记界面演示图" width="600" height="400">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>核心功能亮点</h2>
+                    <p>全方位的知识管理解决方案</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">✦</div>
+                        <h3>多端实时同步</h3>
+                        <p>在手机、电脑、平板上无缝切换，您的笔记会自动同步，确保数据随时随地可用，更新内容即时呈现。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">✎</div>
+                        <h3>强大的剪藏功能</h3>
+                        <p>一键保存网页、文章和视频内容，支持富文本排版。即使网页关闭，您依然能保留完整的阅读记录和关键信息。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">⌘</div>
+                        <h3>高效检索引擎</h3>
+                        <p>支持全文搜索，不仅能搜标题，还能识别笔记中的文字、图片和附件内容。只需几秒钟，即可从成千上万条笔记中找到所需信息。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">☰</div>
+                        <h3>灵活的笔记本分类</h3>
+                        <p>自定义笔记本和标签体系，将碎片化信息按项目、时间或主题分类存储，构建井井有条的知识库。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>OCR 图片识别</h3>
+                        <p>自动识别图片中的文字内容，将截图、照片转化为可编辑的文本，极大提升移动端记录效率。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>企业级安全加密</h3>
+                        <p>提供本地加密和密码保护功能，确保您的敏感笔记和商业机密只对授权用户可见，数据安全有保障。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section id="use-cases" class="use-cases">
+            <div class="container">
+                <div class="section-title">
+                    <h2>满足不同场景需求</h2>
+                    <p>从个人成长到团队协作，印象笔记无处不在</p>
+                </div>
+                <div class="case-grid">
+                    <div class="case-item">
+                        <img src="https://picsum.photos/seed/work/400/300.jpg" alt="商务办公场景">
+                        <h3>商务办公</h3>
+                        <p>会议记录自动生成，项目进度一目了然，合同文档集中管理，让工作汇报更加专业高效。</p>
+                    </div>
+                    <div class="case-item">
+                        <img src="https://picsum.photos/seed/study/400/300.jpg" alt="学习研究场景">
+                        <h3>学习研究</h3>
+                        <p>整理课程重点、文献资料，利用笔记之间的关联功能构建知识网络，辅助深度学习与复习。</p>
+                    </div>
+                    <div class="case-item">
+                        <img src="https://picsum.photos/seed/life/400/300.jpg" alt>生活旅行场景">
+                        <h3>生活旅行</h3>
+                        <p>规划旅行路线，记录美食体验，保存车票和登机牌截图，让回忆整理变得简单有趣。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Showcase Section -->
+        <section class="app-showcase">
+            <div class="container">
+                <div class="showcase-layout">
+                    <div class="showcase-content">
+                        <h2>随时随地，捕捉稍纵即逝的灵感</h2>
+                        <p>无论您是正在咖啡厅构思方案，还是在通勤路上记录感悟，印象笔记都能为您提供流畅的记录体验。配合强大的剪藏插件，互联网上的优质内容也能轻松收入囊中。</p>
+                        <a href="#" class="btn" style="background: white; color: var(--primary-color);">下载桌面版</a>
+                    </div>
+                    <div class="showcase-visual">
+                        <div class="app-mockup">
+                            <img src="https://picsum.photos/seed/app1/300/200.jpg" alt="移动端界面">
+                        </div>
+                        <div class="app-mockup">
+                            <img src="https://picsum.photos/seed/app2/300/200.jpg" alt="桌面端界面">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="comparison">
+            <div class="container">
+                <div class="section-title">
+                    <h2>选择您的专属方案</h2>
+                    <p>为个人或团队提供灵活的订阅选项</p>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>功能特性</th>
+                                <th>免费版</th>
+                                <th>高级会员</th>
+                                <th>企业版</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>笔记数量</strong></td>
+                                <td>无限</td>
+                                <td>无限</td>
+                                <td>无限</td>
+                            </tr>
+                            <tr>
+                                <td><strong>每月上传流量</strong></td>
+                                <td>60MB</td>
+                                <td>10GB</td>
+                                <td>不限量</td>
+                            </tr>
+                            <tr>
+                                <td><strong>剪藏功能</strong></td>
+                                <td>基础版</td>
+                                <td>高级版</td>
+                                <td>完整版</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OCR 文字识别</strong></td>
+                                <td>不支持</td>
+                                <td>每月 100 次</td>
+                                <td>每月 500 次</td>
+                            </tr>
+                            <tr>
+                                <td><strong>离线笔记</strong></td>
+                                <td>不支持</td>
+                                <td>支持</td>
+                                <td>支持</td>
+                            </tr>
+                            <tr>
+                                <td><strong>团队协作空间</strong></td>
+                                <td>不支持</td>
+                                <td>不支持</td>
+                                <td>支持</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="features" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                    <p>关于印象笔记的使用技巧与常见疑问</p>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <details style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: var(--text-main);">印象笔记支持哪些操作系统？</summary>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">印象笔记支持 Windows、macOS、iOS、Android 以及 Web 浏览器，确保您在任何设备上都能无缝访问您的笔记。</p>
+                    </details>
+                    <details style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: var(--text-main);">如何将网页内容保存到印象笔记？</summary>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">您可以在浏览器中安装印象笔记的剪藏插件（Clipping），点击插件图标即可将当前网页、文章或视频保存为笔记。</p>
+                    </details>
+                    <details style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <summary style="cursor: pointer; font-weight: 600; font-size: 1.1rem; color: var(--text-main);">数据安全吗？</summary>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">印象笔记采用企业级的数据加密技术。您可以为敏感笔记设置密码保护，并在设备丢失时通过“抹除数据”功能保护隐私。</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>印象笔记</h3>
+                    <p>致力于帮助人们捕捉灵感、规划生活、管理任务。让知识成为您的生产力引擎。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">下载客户端</a></li>
+                        <li><a href="#">剪藏插件</a></li>
+                        <li><a href="#">价格方案</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">官方博客</a></li>
+                        <li><a href="#">开发者 API</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 印象笔记演示网站 版权所有. 此页面为设计演示。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的移动端菜单切换逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('#nav-menu');
+
+            menuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // 点击菜单项后自动关闭菜单
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuBtn.textContent = '☰';
+                });
+            });
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
