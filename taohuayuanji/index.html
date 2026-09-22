@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="桃花源记的翻译与全文赏析。提供《桃花源记》标准文言文原文、逐句现代汉语翻译、重点字词注释及全文深度解析，帮助用户理解陶渊明笔下的理想境界。">
+    <meta name="keywords" content="桃花源记的翻译, 桃花源记, 陶渊明, 文言文翻译, 古文赏析">
+    <title>桃花源记的翻译 - 全文注释与深度赏析</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e67e22;
+            --primary-hover: #d35400;
+            --bg-color: #fdfbf7;
+            --text-color: #2c3e50;
+            --text-secondary: #596275;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --container-width: 1000px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+        }
+
+        /* Text Blocks */
+        .text-block {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .text-block h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .original-text {
+            font-family: "Kaiti", "STKaiti", "KaiTi", serif;
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .translation-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .translation-text p {
+            margin-bottom: 15px;
+        }
+
+        .translation-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Annotation List */
+        .annotation-list {
+            list-style: none;
+        }
+
+        .annotation-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .annotation-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .term {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        .meaning {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Features/Analysis */
+        .features {
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .feature-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--text-color);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .quote-text {
+            font-family: "Kaiti", serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: var(--text-secondary);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <span>文言</span>文典
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">全文赏析</a></li>
+                    <li><a href="#">字词注释</a></li>
+                    <li><a href="#">阅读指南</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>桃花源记的翻译</h1>
+            <p>探索陶渊明笔下的理想世界，获取《桃花源记》标准文言文原文与逐句现代汉语翻译，深入理解其文化内涵。</p>
+            <div class="hero-tags">
+                <span class="tag">晋太元中</span>
+                <span class="tag">武陵人捕鱼</span>
+                <span class="tag">忘路之远近</span>
+                <span class="tag">豁然开朗</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="content-grid">
+            <!-- Left Column: Content -->
+            <div class="main-content">
+                <article class="text-block">
+                    <h2>《桃花源记》原文</h2>
+                    <div class="original-text">
+                        <p>晋太元中，武陵人捕鱼为业。缘溪行，忘路之远近。忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。渔人甚异之，复前行，欲穷其林。</p>
+                        <p>林尽水源，便得一山，山有小口，仿佛若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然，有良田美池桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣着，悉如外人。黄发垂髫，并怡然自乐。</p>
+                        <p>见渔人，乃大惊，问所从来。具答之。便要还家，设酒杀鸡作食。村中闻有此人，咸来问讯。自云先世避秦时乱，率妻子邑人来此绝境，不复出焉，遂与外人间隔。问今是何世，乃不知有汉，无论魏晋。此人一一为具言所闻，皆叹惋。余人各复延至其家，皆出酒食。停数日，辞去。此中人语云：“不足为外人道也。”</p>
+                        <p>既出，得其船，便扶向路，处处志之。及郡下，诣太守，说如此。太守即遣人随其往，寻向所志，遂迷，不复得路。</p>
+                        <p>南阳刘子骥，高尚士也，闻之，欣然规往。未果，寻病终。后遂无问津者。</p>
+                    </div>
+                </article>
+
+                <article class="text-block">
+                    <h2>《桃花源记》现代文翻译</h2>
+                    <div class="translation-text">
+                        <p>东晋太元年间，有个武陵人靠捕鱼为生。有一天，他沿着溪水划船，忘记了路程的远近。忽然遇到一片桃花林，生长在溪水的两岸，长达几百步，中间没有别的树木，芳香的草地鲜嫩美丽，地上的落花繁多交杂。渔人对此感到非常诧异，继续往前走，想要走到这片林子的尽头。</p>
+                        <p>桃林在溪水发源的地方就到头了，便看见一座山，山上有个小洞口，里面好像有点光亮。渔人便丢下船，从洞口进去。起初，洞口很窄，仅容一个人通过。又走了几十步，突然变得开阔明亮。这里土地平坦宽广，房屋整整齐齐，有肥沃的田地、美丽的池塘和桑树竹林之类。田间小路交错相通，村落间能互相听到鸡鸣狗叫的声音。其中来来往往耕种劳作的人，男女的穿戴，都像桃花源外的人。老人和小孩，都安闲快乐。</p>
+                        <p>（桃花源中的人）看见渔人，竟然大吃一惊，问他是从哪儿来的。渔人详细地作了回答。村里人就邀请他到家里做客，摆酒杀鸡做饭款待他。村里听说来了这么一个人，都来打听消息。他们自己说祖先为了躲避秦时的战乱，带领妻子儿女和乡邻来到这个与世隔绝的地方，不再出去，于是就和外面的人断绝了往来。村里人问现在是什么朝代，他们竟然不知道有汉朝，更不用说魏朝和晋朝了。渔人把自己听到的事一一详细地告诉了他们，他们都感叹惋惜。其余的人也各自邀请渔人到自己的家里，都拿出酒菜来款待。住了几天，渔人告辞离开。这里的人告诉他说：“这里的情况不值得对外面的人说啊。”</p>
+                        <p>（渔人）出来以后，找到了他的船，就顺着旧路回去，处处都做了记号。他到了郡城下，去拜见太守，报告了这番经历。太守立即派人跟着他去，寻找先前做的记号，最终迷路了，再也找不到通往桃花源的路了。</p>
+                        <p>南阳的刘子骥，是当时一位高尚的隐士，听到了这个消息，高兴地计划前往。没有实现，不久就病死了。此后就再也没有探访桃花源的人了。</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <aside class="sidebar">
+                <div class="text-block">
+                    <h2>重点字词注释</h2>
+                    <ul class="annotation-list">
+                        <li class="annotation-item">
+                            <span class="term">缘溪行</span>
+                            <span class="meaning">顺着溪水划船。缘，沿，顺着。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">落英缤纷</span>
+                            <span class="meaning">落花纷纷的样子。缤纷，繁多而杂乱的样子。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">欲穷其林</span>
+                            <span class="meaning">想要走到林子的尽头。穷，尽。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">仿佛若有光</span>
+                            <span class="meaning">隐隐约约好像有光亮。仿佛，隐隐约约。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">豁然开朗</span>
+                            <span class="meaning">形容由狭窄幽暗突然变得宽阔明亮。豁然，开阔的样子；开朗，开阔明亮。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">交通</span>
+                            <span class="meaning">交错相通。在现代汉语中是运输、邮电事业的总称。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">妻子</span>
+                            <span class="meaning">妻子和儿女。在现代汉语中是“妻子”的意思。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">绝境</span>
+                            <span class="meaning">与世隔绝的地方。现代汉语中指没有出路的地方。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">无论</span>
+                            <span class="meaning">更不必说，更不用讲。在现代汉语中是连词，表示条件或另提一事。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">延</span>
+                            <span class="meaning">邀请。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">志</span>
+                            <span class="meaning">做标记。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">寻</span>
+                            <span class="meaning">随即，不久。</span>
+                        </li>
+                        <li class="annotation-item">
+                            <span class="term">问津</span>
+                            <span class="meaning">问路。津，渡口。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-block">
+                    <h2>文章主旨</h2>
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-icon">1</div>
+                            <div class="feature-content">
+                                <h3>理想社会的写照</h3>
+                                <p>通过渔人的经历，描绘了一个没有战乱、没有压迫、安居乐业的理想社会，反映了当时人民厌恶战争、追求和平生活的愿望。</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">2</div>
+                            <div class="feature-content">
+                                <h3>政治讽刺</h3>
+                                <p>通过“乃不知有汉，无论魏晋”的描述，委婉地讽刺了当时的黑暗现实，表达了作者对现实政治的不满和对隐居生活的向往。</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">3</div>
+                            <div class="feature-content">
+                                <h3>艺术手法</h3>
+                                <p>运用虚实相生、情景交融的手法，使文章意境优美，引人入胜，具有极高的文学价值。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <section class="quote-section">
+        <div class="container">
+            <p class="quote-text">“芳草鲜美，落英缤纷。”</p>
+            <p class="quote-author">—— 陶渊明《桃花源记》</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">版权声明</a>
+                <a href="#">联系合作</a>
+                <a href="#">帮助中心</a>
+            </div>
+            <p>&copy; 2023 文言文典 - 提供专业的古文翻译与学习资源</p>
+        </div>
+    </footer>
+
+</body>
+</html>
